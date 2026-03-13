@@ -1,57 +1,98 @@
 "use client"
 import { useState } from "react"
 
-export default function BMI(){
-
-const [weight,setWeight]=useState("")
-const [height,setHeight]=useState("")
-const [bmi,setBmi]=useState(null)
-
-function calc(){
-
-let h = height/100
-
-let b = weight/(h*h)
-
-setBmi(b.toFixed(2))
-
+export const metadata = {
+  title: "BMI Calculator – Check Your Body Mass Index | ExamSoup",
+  description:
+    "Free BMI calculator to check your Body Mass Index using height and weight. Know if you are underweight, normal, overweight or obese.",
 }
 
-return(
+export default function BMI() {
 
-<div className="p-10">
+  const [weight,setWeight]=useState("")
+  const [height,setHeight]=useState("")
+  const [bmi,setBmi]=useState(null)
+  const [status,setStatus]=useState("")
 
-<h1 className="text-3xl font-bold mb-5">
-BMI Calculator
-</h1>
+  function calc(){
 
-<input
-className="border p-2 block mb-3"
-placeholder="Weight (kg)"
-onChange={(e)=>setWeight(e.target.value)}
-/>
+    if(!weight || !height) return
 
-<input
-className="border p-2 block mb-3"
-placeholder="Height (cm)"
-onChange={(e)=>setHeight(e.target.value)}
-/>
+    let h = height/100
+    let b = weight/(h*h)
+    let result = b.toFixed(2)
 
-<button
-className="bg-black text-white px-4 py-2"
-onClick={calc}
->
-Calculate
-</button>
+    setBmi(result)
 
-{bmi && (
-<h2 className="mt-5 text-xl">
-BMI: {bmi}
-</h2>
-)}
+    if(result < 18.5){
+      setStatus("Underweight")
+    }
+    else if(result >= 18.5 && result < 24.9){
+      setStatus("Normal Weight")
+    }
+    else if(result >= 25 && result < 29.9){
+      setStatus("Overweight")
+    }
+    else{
+      setStatus("Obese")
+    }
+  }
 
-</div>
+  return(
 
-)
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-200 p-6">
+
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+
+        <h1 className="text-3xl font-bold text-center mb-3 text-gray-800">
+          BMI Calculator
+        </h1>
+
+        <p className="text-gray-500 text-center mb-6">
+          Calculate your Body Mass Index instantly
+        </p>
+
+        <input
+          type="number"
+          className="w-full border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          placeholder="Enter Weight (kg)"
+          value={weight}
+          onChange={(e)=>setWeight(e.target.value)}
+        />
+
+        <input
+          type="number"
+          className="w-full border rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          placeholder="Enter Height (cm)"
+          value={height}
+          onChange={(e)=>setHeight(e.target.value)}
+        />
+
+        <button
+          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition"
+          onClick={calc}
+        >
+          Calculate BMI
+        </button>
+
+        {bmi && (
+          <div className="mt-6 text-center bg-gray-50 p-4 rounded-lg">
+
+            <h2 className="text-2xl font-bold text-gray-800">
+              Your BMI: {bmi}
+            </h2>
+
+            <p className="text-lg mt-2 text-indigo-600 font-medium">
+              {status}
+            </p>
+
+          </div>
+        )}
+
+      </div>
+
+    </div>
+
+  )
 
 }
