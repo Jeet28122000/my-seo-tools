@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>EMI Calculator | ExamSoup</title>
+
+<meta name="description"
+content="Free EMI calculator to calculate loan EMI instantly">
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<header>
+<h1>ExamSoup Free Calculators</h1>
+<nav>
+<a href="/">Home</a>
+<a href="/emi-calculator.html">EMI</a>
+<a href="/bmi-calculator.html">BMI</a>
+</nav>
+</header>
+
+<main>
+
+<h2>EMI Calculator</h2>
+
+<input id="loan" placeholder="Loan Amount">
+
+<input id="rate" placeholder="Interest Rate %">
+
+<input id="months" placeholder="Loan Tenure (Months)">
+
+<button onclick="calcEMI()">Calculate EMI</button>
+
+<h3 id="result"></h3>
+
+</main>
+
+<footer>
+<p>© 2026 ExamSoup</p>
+</footer>
+
+<script>
+
+function calcEMI(){
+
+let loan=document.getElementById("loan").value
+let rate=document.getElementById("rate").value
+let months=document.getElementById("months").value
+
+let r=rate/12/100
+
+let emi=loan*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1)
+
+document.getElementById("result").innerHTML="EMI: ₹"+emi.toFixed(2)
+
+}
+
+</script>
+
+</body>
+</html>
