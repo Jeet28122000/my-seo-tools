@@ -10,8 +10,8 @@ export default function Home() {
       <p>Select a tool below</p>
 
       <ul>
-        <li><a href="/tools/emi-calculator">EMI Calculator</a></li>
-        <li><a href="/tools/bmi-calculator">BMI Calculator</a></li>
+        <li><a href="/emi-calculator">EMI Calculator</a></li>
+        <li><a href="/bmi-calculator">BMI Calculator</a></li>
       </ul>
     </main>
   );
