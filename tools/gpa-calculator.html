@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPA Calculator – Calculate Your College & High School Grades | ExamSoup</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>GPA Calculator</h1>
+  <p>Easily calculate your semester GPA based on course grades and credit hours</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card" id="gpa-form">
+      <h2>Add Your Courses</h2>
+      <div id="course-list">
+        <div class="course-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+          <input type="text" placeholder="Course Name" style="flex: 2;">
+          <select class="grade-select" style="flex: 1;">
+            <option value="4.0">A</option>
+            <option value="3.0">B</option>
+            <option value="2.0">C</option>
+            <option value="1.0">D</option>
+            <option value="0.0">F</option>
+          </select>
+          <input type="number" class="credits" placeholder="Credits" style="flex: 1;" value="3">
+        </div>
+      </div>
+      <button onclick="addCourse()" style="background: #7f8c8d; margin-bottom: 10px;">+ Add Course</button>
+      <button onclick="calcGPA()">Calculate GPA</button>
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="time-calculator.html">Time Calculator</a> |
+  <a href="bmi-calculator.html">BMI Calculator</a>
+</section>
+
+<footer><p>© 2026 ExamSoup</p></footer>
+<script src="../js/tools.js"></script>
+</body>
+</html>

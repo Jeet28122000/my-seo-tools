@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Salary Calculator – Calculate Take-Home Pay | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Salary Calculator</h1>
+  <p>Convert your annual income to hourly rates and estimate your monthly take-home pay</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Income Details</h2>
+
+      <input id="annualSalary" type="number" placeholder="Annual Salary (Gross)">
+      <input id="taxRate" type="number" placeholder="Estimated Tax % (Optional)">
+      <input id="workHours" type="number" placeholder="Hours per week (Default 40)" value="40">
+
+      <button onclick="calcSalary()">Calculate Breakdown</button>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Standard Work Year Breakdown</h2>
+  <table>
+    <tr><th>Period</th><th>Count</th></tr>
+    <tr><td>Weeks per Year</td><td>52</td></tr>
+    <tr><td>Months per Year</td><td>12</td></tr>
+    <tr><td>Standard Hours</td><td>2,080 (40 hrs/week)</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Gross vs. Net Income</h2>
+  <p>
+    <b>Gross Income</b> is the total amount you earn before any deductions. <b>Net Income</b>, often called "take-home pay," is what remains after taxes, social security, and health insurance are subtracted.
+  </p>
+</section>
+
+<section class="content">
+  <h2>How it is Calculated</h2>
+  <ul>
+    <li><b>Monthly:</b> Annual Salary / 12</li>
+    <li><b>Weekly:</b> Annual Salary / 52</li>
+    <li><b>Hourly:</b> Weekly Salary / Hours per Week</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="percentage-calculator.html">Percentage Calculator</a> |
+  <a href="loan-calculator.html">Loan Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

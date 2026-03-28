@@ -1,64 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EMI Calculator | ExamSoup</title>
+<title>EMI Calculator – Calculate Your Monthly Loan Payments | ExamSoup</title>
 
-<meta name="description"
-content="Free EMI calculator to calculate loan EMI instantly">
-
-<link rel="stylesheet" href="/css/style.css">
-
+<link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
-<header>
-<h1>ExamSoup Free Calculators</h1>
-<nav>
-<a href="/">Home</a>
-<a href="/emi-calculator.html">EMI</a>
-<a href="/bmi-calculator.html">BMI</a>
-</nav>
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
 </header>
 
-<main>
+<section class="hero">
+  <h1>EMI Calculator</h1>
+  <p>Plan your finances by calculating your monthly loan installments accurately</p>
+</section>
 
-<h2>EMI Calculator</h2>
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Calculate Your Loan EMI</h2>
 
-<input id="loan" placeholder="Loan Amount">
+      <input id="loanAmount" type="number" placeholder="Loan Amount (e.g. 500000)">
+      <input id="interestRate" type="number" step="0.1" placeholder="Interest Rate (% per annum)">
+      <input id="tenure" type="number" placeholder="Tenure (Months)">
 
-<input id="rate" placeholder="Interest Rate %">
+      <button onclick="calcEMI()">Calculate EMI</button>
 
-<input id="months" placeholder="Loan Tenure (Months)">
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
 
-<button onclick="calcEMI()">Calculate EMI</button>
+<section class="content">
+  <h2>Loan Summary Details</h2>
+  <table>
+    <tr><th>Component</th><th>Description</th></tr>
+    <tr><td>Monthly EMI</td><td>The amount you pay every month</td></tr>
+    <tr><td>Total Interest</td><td>Total extra cost over the loan period</td></tr>
+    <tr><td>Total Payment</td><td>Principal amount + Total interest</td></tr>
+  </table>
+</section>
 
-<h3 id="result"></h3>
+<section class="content">
+  <h2>What is an EMI?</h2>
+  <p>
+    An Equated Monthly Installment (EMI) is a fixed payment amount made by a borrower to a lender at a specified date each calendar month. EMIs are used to pay off both interest and principal each month so that over a specified number of years, the loan is paid off in full.
+  </p>
+</section>
 
-</main>
+<section class="content">
+  <h2>EMI Formula</h2>
+  <p><strong>EMI = [P x R x (1+R)^N] / [(1+R)^N - 1]</strong></p>
+  <p><small>Where P = Principal, R = Monthly Interest Rate, N = Number of Months.</small></p>
+</section>
+
+<section class="content">
+  <h2>Smart Borrowing Tips</h2>
+  <ul>
+    <li><b>Short Tenure:</b> Higher EMI but much lower total interest.</li>
+    <li><b>Pre-payments:</b> Helps in reducing the principal faster.</li>
+    <li><b>Credit Score:</b> A better score helps in securing lower interest rates.</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>FAQs</h2>
+  <h3>Does the EMI change during the loan?</h3>
+  <p>Usually, no. However, in floating interest rate loans, the EMI or tenure can change based on market rates.</p>
+  <h3>Can I pay more than the EMI?</h3>
+  <p>Yes, most lenders allow "part-payments" which help close the loan earlier.</p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="bmi-calculator.html">BMI Calculator</a> |
+  <a href="age-calculator.html">Age Calculator</a>
+</section>
 
 <footer>
-<p>© 2026 ExamSoup</p>
+  <p>© 2026 ExamSoup</p>
 </footer>
 
-<script>
-
-function calcEMI(){
-
-let loan=document.getElementById("loan").value
-let rate=document.getElementById("rate").value
-let months=document.getElementById("months").value
-
-let r=rate/12/100
-
-let emi=loan*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1)
-
-document.getElementById("result").innerHTML="EMI: ₹"+emi.toFixed(2)
-
-}
-
-</script>
+<script src="../js/tools.js"></script>
 
 </body>
 </html>

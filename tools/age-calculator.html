@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Age Calculator – Calculate Your Exact Age | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Age Calculator</h1>
+  <p>Find out exactly how old you are in years, months, and days</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Enter Your Date of Birth</h2>
+
+      <input id="dob" type="date">
+      <input id="targetDate" type="date" placeholder="Calculate age as of (Today)">
+
+      <button onclick="calcAge()">Calculate Age</button>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Common Age Milestones</h2>
+  <table>
+    <tr><th>Age</th><th>Significance</th></tr>
+    <tr><td>18</td><td>Legal Adult / Voting Rights</td></tr>
+    <tr><td>21</td><td>Global Legal Drinking/Marriage Age (varies)</td></tr>
+    <tr><td>60+</td><td>Senior Citizen Status</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Why use an Age Calculator?</h2>
+  <p>
+    While we usually know our age in years, calculating the exact months and days is helpful for official forms, insurance applications, or just knowing how many days are left until your next big milestone.
+  </p>
+</section>
+
+<section class="content">
+  <h2>How it Works</h2>
+  <p><strong>Age = [Current Date] - [Date of Birth]</strong></p>
+  <p>Our algorithm accounts for leap years and the varying number of days in each month to give you a precise breakdown.</p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="bmi-calculator.html">BMI Calculator</a> |
+  <a href="emi-calculator.html">EMI Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

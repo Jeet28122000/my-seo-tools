@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mortgage Calculator – Estimate Your Monthly House Payments | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Mortgage Calculator</h1>
+  <p>Calculate your total monthly home payment including taxes and insurance</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Home Loan Details</h2>
+
+      <input id="homePrice" type="number" placeholder="Home Price ($)">
+      <input id="downPayment" type="number" placeholder="Down Payment ($)">
+      <input id="interestRate" type="number" step="0.01" placeholder="Interest Rate (%)">
+      <input id="loanTerm" type="number" placeholder="Loan Term (Years)">
+
+      <p style="margin-top:15px; font-weight:bold;">Monthly Extra Costs</p>
+      <input id="propertyTax" type="number" placeholder="Property Tax ($/mo)">
+      <input id="insurance" type="number" placeholder="Home Insurance ($/mo)">
+
+      <button onclick="calcMortgage()">Calculate Payment</button>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Mortgage Components (PITI)</h2>
+  <table>
+    <tr><th>Component</th><th>Meaning</th></tr>
+    <tr><td>Principal</td><td>The actual amount borrowed to pay the seller</td></tr>
+    <tr><td>Interest</td><td>The cost paid to the lender for the loan</td></tr>
+    <tr><td>Taxes</td><td>Local government property taxes</td></tr>
+    <tr><td>Insurance</td><td>Protection for your home and lender's interest</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>How Mortgages Work</h2>
+  <p>
+    A mortgage is a specific type of loan used to purchase real estate. The property itself serves as collateral. Most homeowners choose a **30-year fixed-rate mortgage**, but 15-year options are popular for those who want to pay less interest over time.
+  </p>
+</section>
+
+<section class="content">
+  <h2>The Calculation</h2>
+  <p>The monthly principal and interest are calculated using the standard amortization formula, then we add your monthly tax and insurance estimates to find your <b>Total Monthly Payment</b>.</p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="loan-calculator.html">Loan Calculator</a> |
+  <a href="discount-calculator.html">Discount Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

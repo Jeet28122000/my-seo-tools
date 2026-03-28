@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tip Calculator – Split Bills and Calculate Gratuity | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Tip Calculator</h1>
+  <p>Quickly calculate the right tip amount and split the bill with friends</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Bill Details</h2>
+
+      <input id="billAmount" type="number" placeholder="Total Bill Amount ($)">
+      <input id="tipPercent" type="number" placeholder="Tip Percentage (%)" value="15">
+      <input id="numPeople" type="number" placeholder="Number of People" value="1">
+
+      <button onclick="calcTip()">Calculate Tip</button>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Standard Tipping Etiquette</h2>
+  <table>
+    <tr><th>Service Level</th><th>Suggested Tip</th></tr>
+    <tr><td>Excellent</td><td>20% - 25%</td></tr>
+    <tr><td>Good</td><td>18% - 20%</td></tr>
+    <tr><td>Standard</td><td>15%</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Why Use a Tip Calculator?</h2>
+  <p>
+    Tipping can be stressful, especially in large groups. This tool ensures that the <b>gratuity is fair</b> and that everyone knows exactly what they owe, including their share of the tip.
+  </p>
+</section>
+
+<section class="content">
+  <h2>The Calculation</h2>
+  <p><strong>Total Tip = Bill × (Tip % / 100)</strong></p>
+  <p><strong>Total Bill = Bill + Total Tip</strong></p>
+  <p><strong>Per Person = Total Bill / Number of People</strong></p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="percentage-calculator.html">Percentage Calculator</a> |
+  <a href="discount-calculator.html">Discount Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

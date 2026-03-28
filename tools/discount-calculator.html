@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Discount Calculator – Calculate Savings & Sale Price | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Discount Calculator</h1>
+  <p>Quickly find out the final price after a discount and see how much you save</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Calculate Sale Price</h2>
+
+      <input id="originalPrice" type="number" placeholder="Original Price (e.g. 1000)">
+      <input id="discountPercent" type="number" placeholder="Discount Percentage (%)">
+      <input id="taxPercent" type="number" placeholder="Tax % (Optional)" value="0">
+
+      <button onclick="calcDiscount()">Calculate Discount</button>
+
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Common Discount Conversions</h2>
+  <table>
+    <tr><th>Discount</th><th>You Pay</th><th>Savings Multiplier</th></tr>
+    <tr><td>10% Off</td><td>90% of Price</td><td>0.10</td></tr>
+    <tr><td>25% Off</td><td>75% of Price</td><td>0.25</td></tr>
+    <tr><td>50% Off</td><td>Half Price</td><td>0.50</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Why use a Discount Calculator?</h2>
+  <p>
+    During sales, it can be tricky to do mental math for percentages like 15% or 35% off. This tool allows you to see the actual money you keep in your pocket and the final amount you need to pay at the counter.
+  </p>
+</section>
+
+<section class="content">
+  <h2>Discount Formula</h2>
+  <p><strong>Savings = Original Price × (Discount / 100)</strong></p>
+  <p><strong>Final Price = Original Price - Savings</strong></p>
+</section>
+
+<section class="content">
+  <h2>Smart Shopping Tips</h2>
+  <ul>
+    <li><b>Compare Prices:</b> Sometimes a 50% off price is still higher than another store's base price.</li>
+    <li><b>Check for Taxes:</b> Remember that discounts are usually applied before sales tax.</li>
+    <li><b>Stacked Coupons:</b> If you have two discounts, apply the first one, then apply the second to the new balance.</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="emi-calculator.html">EMI Calculator</a> |
+  <a href="age-calculator.html">Age Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

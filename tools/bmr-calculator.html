@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMR Calculator – Calculate Your Basal Metabolic Rate | ExamSoup</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>BMR Calculator</h1>
+  <p>Find out how many calories your body burns at rest</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Enter Your Details</h2>
+      <div style="margin-bottom: 10px;">
+        <label><input type="radio" name="gender" value="male" checked> Male</label>
+        <label><input type="radio" name="gender" value="female"> Female</label>
+      </div>
+      <input id="age" type="number" placeholder="Age (years)">
+      <input id="weightBMR" type="number" placeholder="Weight (kg)">
+      <input id="heightBMR" type="number" placeholder="Height (cm)">
+      <button onclick="calcBMR()">Calculate BMR</button>
+      <div id="resultBoxBMR" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2026 ExamSoup</p></footer>
+<script src="../js/tools.js"></script>
+</body>
+</html>

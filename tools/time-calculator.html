@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Time Calculator – Add, Subtract, or Find Time Difference | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Time Calculator</h1>
+  <p>Easily calculate the duration between two times or add hours and minutes together</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Time Difference (Hours/Min)</h2>
+
+      <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <div style="flex: 1;">
+          <label><small>Start Time</small></label>
+          <input id="startTime" type="time">
+        </div>
+        <div style="flex: 1;">
+          <label><small>End Time</small></label>
+          <input id="endTime" type="time">
+        </div>
+      </div>
+
+      <button onclick="calcTimeDiff()">Calculate Difference</button>
+      <div id="resDiff" class="result-box"></div>
+
+      <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+
+      <h2>Add Time Durations</h2>
+      <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+        <input id="addH" type="number" placeholder="Hours">
+        <input id="addM" type="number" placeholder="Min">
+      </div>
+      <button onclick="addDurations()">Add to Current Time</button>
+      <div id="resAdd" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Time Conversion Table</h2>
+  <table>
+    <tr><th>Unit</th><th>Equivalent</th></tr>
+    <tr><td>1 Hour</td><td>60 Minutes</td></tr>
+    <tr><td>1 Day</td><td>1,440 Minutes</td></tr>
+    <tr><td>1 Week</td><td>10,080 Minutes</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Why Use a Time Calculator?</h2>
+  <p>
+    Calculating time manually is difficult because it uses a **base-60 system** (sexagesimal) rather than the standard base-10 decimal system. This tool prevents errors when calculating **payroll hours**, flight durations, or study schedules.
+  </p>
+</section>
+
+<section class="content">
+  <h2>The Logic</h2>
+  <p>To find the difference, we convert both times into total minutes from midnight, subtract them, and then convert the result back into hours and minutes.</p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="age-calculator.html">Age Calculator</a> |
+  <a href="salary-calculator.html">Salary Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

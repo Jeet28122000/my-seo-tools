@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Percentage Calculator – Quick & Easy Calculations | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Percentage Calculator</h1>
+  <p>Solve common percentage problems like finding a value, percentage change, or tip amounts</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Calculate Percentage</h2>
+
+      <p style="margin-bottom: 5px;"><strong>What is</strong></p>
+      <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <input id="perc1" type="number" placeholder="%">
+        <span style="align-self: center;">of</span>
+        <input id="val1" type="number" placeholder="Value">
+      </div>
+      <button onclick="calcPerc1()">Calculate</button>
+      <div id="res1" class="result-box"></div>
+
+      <hr style="margin: 25px 0; border: 0; border-top: 1px solid #eee;">
+
+      <p style="margin-bottom: 5px;"><strong>Percentage Increase/Decrease</strong></p>
+      <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <input id="oldVal" type="number" placeholder="From">
+        <span style="align-self: center;">to</span>
+        <input id="newVal" type="number" placeholder="To">
+      </div>
+      <button onclick="calcPerc2()">Calculate % Change</button>
+      <div id="res2" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>Common Fraction to Percentage Conversions</h2>
+  <table>
+    <tr><th>Fraction</th><th>Decimal</th><th>Percentage</th></tr>
+    <tr><td>1/4</td><td>0.25</td><td>25%</td></tr>
+    <tr><td>1/2</td><td>0.50</td><td>50%</td></tr>
+    <tr><td>3/4</td><td>0.75</td><td>75%</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Practical Uses for Percentages</h2>
+  <p>
+    Percentages are used daily in various fields. From **calculating tips** at a restaurant and **sales tax** at a store to analyzing **business growth** and **academic grades**, understanding the relationship between numbers and their percentages is a fundamental skill.
+  </p>
+</section>
+
+<section class="content">
+  <h2>The Math</h2>
+  <p><strong>Percentage Value = (Value × Percentage) / 100</strong></p>
+  <p><strong>Percentage Change = ((New Value - Old Value) / Old Value) × 100</strong></p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <a href="discount-calculator.html">Discount Calculator</a> |
+  <a href="loan-calculator.html">Loan Calculator</a>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>

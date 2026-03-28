@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BMI Calculator – Check Your Body Mass Index | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+
+  <input type="text" placeholder="Search tools..." class="search">
+
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>BMI Calculator</h1>
+  <p>Check your Body Mass Index and understand your health category</p>
+</section>
+
+<!-- TOOL -->
+<section class="tool-card">
+
+<div class="tool-container">
+  <div class="calculator-card">
+    <h2>Calculate Your BMI</h2>
+
+    <input id="weight" type="number" placeholder="Weight (kg)">
+    <input id="height" type="number" placeholder="Height (cm)">
+
+    <button onclick="calcBMI()">Calculate BMI</button>
+
+    <div id="resultBox" class="result-box"></div>
+
+  </div>
+
+</section>
+
+<!-- CATEGORY TABLE -->
+<section class="content">
+  <h2>BMI Categories</h2>
+
+  <table>
+    <tr><th>Category</th><th>BMI Range</th></tr>
+    <tr><td>Underweight</td><td>&lt; 18.5</td></tr>
+    <tr><td>Normal Weight</td><td>18.5 – 24.9</td></tr>
+    <tr><td>Overweight</td><td>25 – 29.9</td></tr>
+    <tr><td>Obese</td><td>30+</td></tr>
+  </table>
+</section>
+
+<!-- ABOUT -->
+<section class="content">
+  <h2>What is BMI?</h2>
+  <p>
+    Body Mass Index (BMI) is a simple calculation that uses your weight and height to estimate body fat.
+    It helps categorize individuals into underweight, normal, overweight, or obese.
+  </p>
+</section>
+
+<!-- FORMULA -->
+<section class="content">
+  <h2>BMI Formula</h2>
+  <p><strong>BMI = Weight (kg) / Height² (m²)</strong></p>
+</section>
+
+<!-- HEALTH -->
+<section class="content">
+  <h2>Health Implications</h2>
+
+  <ul>
+    <li><b>Underweight:</b> Nutritional deficiency risk</li>
+    <li><b>Normal:</b> Healthy body range</li>
+    <li><b>Overweight:</b> Risk of lifestyle diseases</li>
+    <li><b>Obese:</b> High risk of heart disease & diabetes</li>
+  </ul>
+
+</section>
+
+<!-- FAQ -->
+<section class="content">
+  <h2>FAQs</h2>
+
+  <h3>What is a healthy BMI?</h3>
+  <p>Between 18.5 and 24.9 is considered healthy.</p>
+
+  <h3>Is BMI accurate?</h3>
+  <p>BMI is a general indicator and may not be accurate for athletes.</p>
+
+</section>
+
+<!-- RELATED -->
+<section class="content">
+  <h2>Related Tools</h2>
+
+  <a href="emi-calculator.html">EMI Calculator</a> |
+  <a href="age-calculator.html">Age Calculator</a>
+
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup</p>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>
