@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Grade Calculator – Weighted & Final Exam Calculator | ExamSoup</title>
+
+<meta name="description" content="Free grade calculator to calculate weighted grades, GPA, and final exam score required. Fast, accurate, and easy to use.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Education</a>
+    <a href="#">Tools</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Grade Calculator</h1>
+  <p>Calculate weighted grades, GPA & final exam score easily</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+
+      <h2>Weighted Grade Calculator</h2>
+
+      <div id="rows">
+        <div class="grade-row">
+          <input placeholder="Assignment">
+          <input class="grade" placeholder="90 or A">
+          <input type="number" class="weight" placeholder="Weight %">
+        </div>
+      </div>
+
+      <button onclick="addRow()">+ Add Row</button>
+      <button onclick="calculateGrade()">Calculate</button>
+
+      <div id="resultBox" class="result-box"></div>
+
+      <hr>
+
+      <h2>Final Grade Calculator</h2>
+
+      <input id="current" placeholder="Current Grade %">
+      <input id="target" placeholder="Target Grade %">
+      <input id="finalWeight" placeholder="Final Exam Weight %">
+
+      <button onclick="calculateTarget()">Calculate</button>
+
+      <div id="targetResult" class="result-box"></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SEO CONTENT -->
+
+<section class="content">
+<h2>Grade Calculator – Calculate Your Grades Accurately</h2>
+<p>
+A grade calculator is an essential tool for students who want to track their academic performance and plan their studies effectively. Whether you are in school, college, or university, calculating your grades manually can be confusing and time-consuming. This online grade calculator simplifies the process by providing instant and accurate results.
+</p>
+
+<p>
+This tool allows you to calculate weighted grades, convert letter grades into percentages, and even determine the score you need in your final exam to achieve your desired grade. It is widely used by students across countries like the United States, UK, Canada, and India.
+</p>
+</section>
+
+<section class="content">
+<h2>What is a Weighted Grade?</h2>
+<p>
+A weighted grade system assigns different importance to assignments, quizzes, exams, and projects. For example, a final exam may carry more weight than a homework assignment. This ensures that more important assessments have a greater impact on your overall grade.
+</p>
+
+<ul>
+<li>Assignments – 20%</li>
+<li>Midterm Exam – 30%</li>
+<li>Final Exam – 50%</li>
+</ul>
+
+<p>
+Using a weighted grade calculator helps you accurately compute your final score without manual errors.
+</p>
+</section>
+
+<section class="content">
+<h2>How to Use This Grade Calculator</h2>
+<ol>
+<li>Enter assignment name (optional)</li>
+<li>Enter grade (percentage or letter like A, B, C)</li>
+<li>Enter weight (%)</li>
+<li>Click calculate</li>
+</ol>
+
+<p>
+You can add multiple rows to include all your assignments and exams.
+</p>
+</section>
+
+<section class="content">
+<h2>Final Exam Grade Calculator</h2>
+<p>
+The final grade calculator helps you determine the score required in your final exam to achieve your target grade. This is useful when planning your study strategy.
+</p>
+
+<p>
+Example:
+</p>
+
+<ul>
+<li>Current Grade: 75%</li>
+<li>Target Grade: 85%</li>
+<li>Final Exam Weight: 40%</li>
+</ul>
+
+<p>
+The calculator will show the exact percentage you need in your final exam.
+</p>
+</section>
+
+<section class="content">
+<h2>Benefits of Using Grade Calculator</h2>
+<ul>
+<li>Instant and accurate results</li>
+<li>Supports weighted grading system</li>
+<li>Helps in academic planning</li>
+<li>Reduces calculation errors</li>
+<li>Easy to use and free</li>
+</ul>
+</section>
+
+<section class="content">
+<h2>FAQs</h2>
+
+<h3>Can I use letter grades?</h3>
+<p>Yes, you can enter grades like A, B+, C- and the calculator will convert them automatically.</p>
+
+<h3>Is this calculator accurate?</h3>
+<p>Yes, it uses standard weighted grade formulas.</p>
+
+<h3>Is it free?</h3>
+<p>Yes, this tool is completely free to use.</p>
+
+</section>
+
+<section class="content">
+<h2>Related Tools</h2>
+<ul>
+<li><a href="/percentage-calculator.html">Percentage Calculator</a></li>
+<li><a href="/age-calculator.html">Age Calculator</a></li>
+<li><a href="/emi-calculator.html">EMI Calculator</a></li>
+</ul>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>ExamSoup</h3>
+      <p>
+        ExamSoup provides free online calculators including BMI, EMI, loan, and finance tools.
+        Our tools are fast, accurate, and designed to help you make better decisions.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul>
+        <li><a href="/bmi-calculator.html">BMI Calculator</a></li>
+        <li><a href="/emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="/age-calculator.html">Age Calculator</a></li>
+        <li><a href="/percentage-calculator.html">Percentage Calculator</a></li>
+        <li><a href="/loan-calculator.html">Loan Calculator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Free Calculators</h4>
+      <p>
+        Use our free calculators to calculate EMI, BMI, loan payments, percentages, and more.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ExamSoup. All rights reserved.</p>
+  </div>
+
+</footer>
+
+<script src="../js/tools.js"></script>
+<script src="../js/grade.js"></script>
+
+</body>
+</html>

@@ -1,80 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Age Calculator – Calculate Your Exact Age | ExamSoup</title>
 
+<meta name="description" content="Free age calculator to find your exact age in years, months, and days. Optionally calculate age as of any date.">
+
 <link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="navbar">
   <div class="logo">ExamSoup</div>
   <input type="text" placeholder="Search tools..." class="search">
   <nav>
     <a href="../index.html">Home</a>
-    <a href="#">Finance</a>
     <a href="#">Health</a>
   </nav>
   <button onclick="toggleDark()" class="dark-btn">🌙</button>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Age Calculator</h1>
-  <p>Find out exactly how old you are in years, months, and days</p>
+  <p>Find your exact age in years, months, and days</p>
 </section>
 
+<!-- TOOL -->
 <section class="tool-card">
   <div class="tool-container">
     <div class="calculator-card">
-      <h2>Enter Your Date of Birth</h2>
 
+      <h2>Enter Your Details</h2>
+
+      <!-- DOB -->
+      <label>Date of Birth</label>
       <input id="dob" type="date">
-      <input id="targetDate" type="date" placeholder="Calculate age as of (Today)">
 
+      <!-- TARGET DATE -->
+      <label>Calculate Age As Of (Optional)</label>
+      <input id="targetDate" type="date">
+      <small>Leave empty to calculate age as of today</small>
+
+      <br><br>
+
+      <!-- BUTTONS -->
+      <button onclick="setToday()">Use Today</button>
       <button onclick="calcAge()">Calculate Age</button>
 
+      <!-- RESULT -->
       <div id="resultBox" class="result-box"></div>
+
     </div>
   </div>
 </section>
 
+<!-- SEO CONTENT -->
 <section class="content">
-  <h2>Common Age Milestones</h2>
-  <table>
-    <tr><th>Age</th><th>Significance</th></tr>
-    <tr><td>18</td><td>Legal Adult / Voting Rights</td></tr>
-    <tr><td>21</td><td>Global Legal Drinking/Marriage Age (varies)</td></tr>
-    <tr><td>60+</td><td>Senior Citizen Status</td></tr>
-  </table>
+
+<h2>What is an Age Calculator?</h2>
+<p>
+An age calculator is a simple tool that helps you determine your exact age based on your date of birth. It calculates your age in years, months, and days with high accuracy.
+</p>
+
+<h2>How Age is Calculated</h2>
+<p>
+The calculation is based on the difference between your date of birth and the selected date (or today's date if not specified).
+</p>
+
+<p><strong>Age = Current Date - Date of Birth</strong></p>
+
+<h2>Why Use an Age Calculator?</h2>
+<ul>
+<li>Know your exact age instantly</li>
+<li>Useful for official documents</li>
+<li>Track milestones and birthdays</li>
+<li>Helps in planning retirement and insurance</li>
+</ul>
+
+<h2>Common Age Milestones</h2>
+<table>
+<tr><th>Age</th><th>Significance</th></tr>
+<tr><td>18</td><td>Legal Adult / Voting Rights</td></tr>
+<tr><td>21</td><td>Legal adulthood in some countries</td></tr>
+<tr><td>60+</td><td>Senior Citizen Status</td></tr>
+</table>
+
+<h2>Related Tools</h2>
+<ul>
+<li><a href="/bmi-calculator.html">BMI Calculator</a></li>
+<li><a href="/emi-calculator.html">EMI Calculator</a></li>
+<li><a href="/percentage-calculator.html">Percentage Calculator</a></li>
+</ul>
+
 </section>
 
-<section class="content">
-  <h2>Why use an Age Calculator?</h2>
-  <p>
-    While we usually know our age in years, calculating the exact months and days is helpful for official forms, insurance applications, or just knowing how many days are left until your next big milestone.
-  </p>
-</section>
+<!-- FOOTER -->
+<footer class="footer">
 
-<section class="content">
-  <h2>How it Works</h2>
-  <p><strong>Age = [Current Date] - [Date of Birth]</strong></p>
-  <p>Our algorithm accounts for leap years and the varying number of days in each month to give you a precise breakdown.</p>
-</section>
+  <div class="footer-container">
 
-<section class="content">
-  <h2>Related Tools</h2>
-  <a href="bmi-calculator.html">BMI Calculator</a> |
-  <a href="emi-calculator.html">EMI Calculator</a>
-</section>
+    <div class="footer-col">
+      <h3>ExamSoup</h3>
+      <p>Free online calculators for health, finance, and education.</p>
+    </div>
 
-<footer>
-  <p>© 2026 ExamSoup</p>
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul>
+        <li><a href="/bmi-calculator.html">BMI Calculator</a></li>
+        <li><a href="/emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="/age-calculator.html">Age Calculator</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ExamSoup. All rights reserved.</p>
+  </div>
+
 </footer>
 
+<!-- COMMON JS -->
 <script src="../js/tools.js"></script>
 
 </body>

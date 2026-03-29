@@ -1,3 +1,6 @@
+// Wrap everything safely
+document.addEventListener("DOMContentLoaded", function () {
+
 function calcBMI() {
 
 let w = document.getElementById("weight").value
@@ -25,10 +28,17 @@ document.getElementById("resultBox").innerHTML =
    <p>Category: <b>${category}</b></p>`
 }
 
+window.calcBMI = calcBMI;
+
+
+// DARK MODE
 function toggleDark(){
   document.body.classList.toggle("dark")
 }
+window.toggleDark = toggleDark;
 
+
+// SEARCH FIX (no layout break)
 const search = document.querySelector(".search");
 
 if(search){
@@ -40,13 +50,15 @@ let cards = document.querySelectorAll(".tool-card");
 cards.forEach(card=>{
 card.style.display =
 card.innerText.toLowerCase().includes(value)
-? "block"
+? ""
 : "none";
 })
 
 })
 }
 
+
+// EMI
 function calcEMI() {
     const P = parseFloat(document.getElementById('loanAmount').value);
     const annualRate = parseFloat(document.getElementById('interestRate').value);
@@ -58,10 +70,8 @@ function calcEMI() {
         return;
     }
 
-    // Monthly interest rate
     const R = (annualRate / 12) / 100;
 
-    // EMI Formula: [P x R x (1+R)^N] / [(1+R)^N - 1]
     const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
 
     const totalPayment = emi * N;
@@ -76,7 +86,10 @@ function calcEMI() {
         </div>
     `;
 }
+window.calcEMI = calcEMI;
 
+
+// AGE
 function calcAge() {
     const dobInput = document.getElementById('dob').value;
     const targetInput = document.getElementById('targetDate').value;
@@ -88,17 +101,14 @@ function calcAge() {
     }
 
     const dob = new Date(dobInput);
-    // Use target date if provided, otherwise use today
     const now = targetInput ? new Date(targetInput) : new Date();
 
     let years = now.getFullYear() - dob.getFullYear();
     let months = now.getMonth() - dob.getMonth();
     let days = now.getDate() - dob.getDate();
 
-    // Adjustment logic for days and months
     if (days < 0) {
         months--;
-        // Get days in the previous month
         const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
         days += lastMonth.getDate();
     }
@@ -118,23 +128,24 @@ function calcAge() {
         `;
     }
 }
+window.calcAge = calcAge;
 
+
+// DISCOUNT
 function calcDiscount() {
     const price = parseFloat(document.getElementById('originalPrice').value);
     const discount = parseFloat(document.getElementById('discountPercent').value);
     const tax = parseFloat(document.getElementById('taxPercent').value) || 0;
     const resultBox = document.getElementById('resultBox');
 
-    if (!price || discount === "" || isNaN(discount)) {
+    if (!price || isNaN(discount)) {
         resultBox.innerHTML = "Please enter the original price and discount.";
         return;
     }
 
-    // Calculate savings
     const savingsAmount = (price * discount) / 100;
     const discountedPrice = price - savingsAmount;
 
-    // Calculate tax on the discounted price
     const taxAmount = (discountedPrice * tax) / 100;
     const finalPrice = discountedPrice + taxAmount;
 
@@ -148,7 +159,10 @@ function calcDiscount() {
         </div>
     `;
 }
+window.calcDiscount = calcDiscount;
 
+
+// LOAN
 function calcLoan() {
     const P = parseFloat(document.getElementById('loanAmount').value);
     const annualRate = parseFloat(document.getElementById('interestRate').value);
@@ -156,229 +170,50 @@ function calcLoan() {
     const resultBox = document.getElementById('resultBox');
 
     if (!P || !annualRate || !years) {
-        resultBox.innerHTML = "Please fill in all fields with valid numbers.";
+        resultBox.innerHTML = "Please fill in all fields.";
         return;
     }
 
-    // Monthly interest rate
     const R = annualRate / 12 / 100;
-    // Number of months
     const N = years * 12;
 
-    // EMI Formula: [P x R x (1+R)^N] / [(1+R)^N - 1]
     const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
     const totalAmount = emi * N;
     const totalInterest = totalAmount - P;
 
     resultBox.innerHTML = `
-        <div style="text-align: left; padding: 10px;">
-            <p style="font-size: 1.2rem; color: #2ecc71;"><strong>Monthly EMI:</strong> ₹${emi.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</p>
-            <hr>
-            <p><strong>Principal Amount:</strong> ₹${P.toLocaleString()}</p>
-            <p><strong>Total Interest:</strong> ₹${totalInterest.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
-            <p><strong>Total Repayment:</strong> ₹${totalAmount.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+        <div style="padding:10px;">
+            <p><strong>Monthly EMI:</strong> ₹${emi.toFixed(2)}</p>
+            <p><strong>Total Interest:</strong> ₹${totalInterest.toFixed(0)}</p>
+            <p><strong>Total Repayment:</strong> ₹${totalAmount.toFixed(0)}</p>
         </div>
     `;
 }
+window.calcLoan = calcLoan;
 
-function calcMortgage() {
-    const price = parseFloat(document.getElementById('homePrice').value);
-    const downPayment = parseFloat(document.getElementById('downPayment').value) || 0;
-    const annualRate = parseFloat(document.getElementById('interestRate').value);
-    const years = parseFloat(document.getElementById('loanTerm').value);
-    const tax = parseFloat(document.getElementById('propertyTax').value) || 0;
-    const insurance = parseFloat(document.getElementById('insurance').value) || 0;
-    const resultBox = document.getElementById('resultBox');
 
-    if (!price || !annualRate || !years) {
-        resultBox.innerHTML = "Please enter Price, Interest, and Term.";
+// FIXED BMR BUG
+function calcBMR() {
+    const age = parseFloat(document.getElementById('age').value);
+    const weight = parseFloat(document.getElementById('weightBMR').value);
+    const height = parseFloat(document.getElementById('heightBMR').value);
+    const gender = document.querySelector('input[name="gender"]:checked')?.value;
+    const res = document.getElementById('resultBoxBMR');
+
+    if (!age || !weight || !height || !gender) {
+        res.innerHTML = "Please fill all fields.";
         return;
     }
 
-    const P = price - downPayment;
-    if (P <= 0) {
-        resultBox.innerHTML = "Down payment cannot exceed home price.";
-        return;
-    }
+    let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+    bmr = (gender === 'male') ? bmr + 5 : bmr - 161;
 
-    const R = annualRate / 12 / 100;
-    const N = years * 12;
-
-    // Principal + Interest
-    const mi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
-
-    // Total including Taxes and Insurance
-    const totalMonthly = mi + tax + insurance;
-
-    resultBox.innerHTML = `
-        <div style="text-align: left; padding: 10px;">
-            <p><strong>P & I Payment:</strong> $${mi.toFixed(2)}</p>
-            <p><strong>Taxes & Insurance:</strong> $${(tax + insurance).toFixed(2)}</p>
-            <hr>
-            <p style="font-size: 1.2rem; color: #2ecc71;"><strong>Total Monthly: $${totalMonthly.toFixed(2)}</strong></p>
-            <p><small>Loan Amount: $${P.toLocaleString()}</small></p>
-        </div>
-    `;
+    res.innerHTML = `<p>Your BMR: <strong>${Math.round(bmr)} Calories/day</strong></p>`;
 }
+window.calcBMR = calcBMR;
 
-// Function 1: X% of Y
-function calcPerc1() {
-    const p = parseFloat(document.getElementById('perc1').value);
-    const v = parseFloat(document.getElementById('val1').value);
-    const res = document.getElementById('res1');
 
-    if (isNaN(p) || isNaN(v)) {
-        res.innerHTML = "Please enter both values.";
-        return;
-    }
-
-    const result = (p / 100) * v;
-    res.innerHTML = `<p>${p}% of ${v} is <strong>${result.toLocaleString()}</strong></p>`;
-}
-
-// Function 2: Percentage Change
-function calcPerc2() {
-    const oldV = parseFloat(document.getElementById('oldVal').value);
-    const newV = parseFloat(document.getElementById('newVal').value);
-    const res = document.getElementById('res2');
-
-    if (isNaN(oldV) || isNaN(newV)) {
-        res.innerHTML = "Please enter both values.";
-        return;
-    }
-
-    if (oldV === 0) {
-        res.innerHTML = "Original value cannot be zero.";
-        return;
-    }
-
-    const change = ((newV - oldV) / oldV) * 100;
-    const direction = change >= 0 ? "Increase" : "Decrease";
-
-    res.innerHTML = `
-        <p>Difference: <strong>${(newV - oldV).toLocaleString()}</strong></p>
-        <p>${direction}: <strong>${Math.abs(change).toFixed(2)}%</strong></p>
-    `;
-}
-
-function calcSalary() {
-    const annual = parseFloat(document.getElementById('annualSalary').value);
-    const tax = parseFloat(document.getElementById('taxRate').value) || 0;
-    const hours = parseFloat(document.getElementById('workHours').value) || 40;
-    const resultBox = document.getElementById('resultBox');
-
-    if (!annual) {
-        resultBox.innerHTML = "Please enter your annual salary.";
-        return;
-    }
-
-    const monthly = annual / 12;
-    const weekly = annual / 52;
-    const hourly = weekly / hours;
-
-    // Net calculations
-    const taxAmount = (annual * tax) / 100;
-    const netAnnual = annual - taxAmount;
-    const netMonthly = netAnnual / 12;
-
-    resultBox.innerHTML = `
-        <div style="text-align: left; padding: 10px;">
-            <p><strong>Monthly (Gross):</strong> $${monthly.toLocaleString(undefined, {maximumFractionDigits: 2})}</p>
-            <p><strong>Hourly Rate:</strong> $${hourly.toFixed(2)}</p>
-            <hr>
-            <p style="color: #2ecc71;"><strong>Estimated Monthly Take-Home:</strong></p>
-            <p style="font-size: 1.2rem;"><strong>$${netMonthly.toLocaleString(undefined, {maximumFractionDigits: 2})}</strong></p>
-            <p><small>Based on ${tax}% estimated tax rate.</small></p>
-        </div>
-    `;
-}
-
-// Calculate difference between two clock times
-function calcTimeDiff() {
-    const start = document.getElementById('startTime').value;
-    const end = document.getElementById('endTime').value;
-    const res = document.getElementById('resDiff');
-
-    if (!start || !end) {
-        res.innerHTML = "Please select both start and end times.";
-        return;
-    }
-
-    const startParts = start.split(':');
-    const endParts = end.split(':');
-
-    let startMin = parseInt(startParts[0]) * 60 + parseInt(startParts[1]);
-    let endMin = parseInt(endParts[0]) * 60 + parseInt(endParts[1]);
-
-    // Handle overnight shifts (e.g., 10 PM to 2 AM)
-    if (endMin < startMin) {
-        endMin += 24 * 60;
-    }
-
-    const diff = endMin - startMin;
-    const h = Math.floor(diff / 60);
-    const m = diff % 60;
-
-    res.innerHTML = `<p>Duration: <strong>${h} Hours and ${m} Minutes</strong></p>`;
-}
-
-// Add a specific duration to the current time
-function addDurations() {
-    const hToAdd = parseInt(document.getElementById('addH').value) || 0;
-    const mToAdd = parseInt(document.getElementById('addM').value) || 0;
-    const res = document.getElementById('resAdd');
-
-    const now = new Date();
-    now.setHours(now.getHours() + hToAdd);
-    now.setMinutes(now.getMinutes() + mToAdd);
-
-    const newTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    res.innerHTML = `<p>New Time: <strong>${newTime}</strong></p>`;
-}
-
-function calcTip() {
-    const bill = parseFloat(document.getElementById('billAmount').value);
-    const tipPerc = parseFloat(document.getElementById('tipPercent').value);
-    const people = parseInt(document.getElementById('numPeople').value) || 1;
-    const resultBox = document.getElementById('resultBox');
-
-    if (!bill || isNaN(tipPerc)) {
-        resultBox.innerHTML = "Please enter the bill amount and tip percentage.";
-        return;
-    }
-
-    const totalTip = (bill * tipPerc) / 100;
-    const totalBill = bill + totalTip;
-    const perPerson = totalBill / people;
-
-    resultBox.innerHTML = `
-        <div style="text-align: left; padding: 10px;">
-            <p><strong>Total Tip:</strong> $${totalTip.toFixed(2)}</p>
-            <p><strong>Total Bill:</strong> $${totalBill.toFixed(2)}</p>
-            <hr>
-            <p style="font-size: 1.2rem; color: #2ecc71;"><strong>Per Person: $${perPerson.toFixed(2)}</strong></p>
-        </div>
-    `;
-}
-
-// GPA Logic
-function addCourse() {
-    const container = document.getElementById('course-list');
-    const row = document.createElement('div');
-    row.className = 'course-row';
-    row.style.cssText = "display: flex; gap: 10px; margin-bottom: 10px;";
-    row.innerHTML = `
-        <input type="text" placeholder="Course Name" style="flex: 2;">
-        <select class="grade-select" style="flex: 1;">
-            <option value="4.0">A</option><option value="3.0">B</option>
-            <option value="2.0">C</option><option value="1.0">D</option>
-            <option value="0.0">F</option>
-        </select>
-        <input type="number" class="credits" placeholder="Credits" style="flex: 1;" value="3">
-    `;
-    container.appendChild(row);
-}
-
+// GPA
 function calcGPA() {
     const grades = document.querySelectorAll('.grade-select');
     const credits = document.querySelectorAll('.credits');
@@ -394,81 +229,59 @@ function calcGPA() {
     const gpa = totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : "0.00";
     document.getElementById('resultBox').innerHTML = `<p>Your GPA: <strong>${gpa}</strong></p>`;
 }
+window.calcGPA = calcGPA;
 
-// BMR Logic (Mifflin-St Jeor Equation)
-function calcBMR() {
-    const age = parseFloat(document.getElementById('age').value);
-    const weight = parseFloat(document.getElementById('weightBMR').value);
-    const height = parseFloat(document.getElementById('heightBMR').value);
-    const gender = document.querySelector('name="gender"]:checked').value;
-    const res = document.getElementById('resultBoxBMR');
 
-    if (!age || !weight || !height) {
-        res.innerHTML = "Please fill all fields.";
-        return;
-    }
-
-    let bmr = (10 * weight) + (6.25 * height) - (5 * age);
-    bmr = (gender === 'male') ? bmr + 5 : bmr - 161;
-
-    res.innerHTML = `<p>Your BMR: <strong>${Math.round(bmr)} Calories/day</strong></p>`;
+// FIX AUTOLOAN ERROR
+function calcAutoLoan(){
+    calcLoan();
 }
+window.calcAutoLoan = calcAutoLoan;
 
-/**
- * Student Loan Refinance Calculator Logic
- */
+
+});
+
+
+// --- Student Loan Refinance Logic ---
 function calcRefi() {
-    // 1. Get input values by ID
     const balance = parseFloat(document.getElementById('refiBalance').value);
-    const oldRate = parseFloat(document.getElementById('oldRate').value);
-    const newRate = parseFloat(document.getElementById('newRate').value);
-    const years = parseFloat(document.getElementById('refiTenure').value);
-    const resBox = document.getElementById('resultBox');
+    const oldR = (parseFloat(document.getElementById('oldRate').value) / 100) / 12;
+    const newR = (parseFloat(document.getElementById('newRate').value) / 100) / 12;
+    const n = 120; // Default 10-year term for US Student Loans
 
-    // 2. Validation: Ensure all fields are filled and positive
-    if (!balance || !oldRate || !newRate || !years || balance <= 0) {
-        resBox.innerHTML = `<p style="color: #d9534f; font-weight: bold;">Please fill in all fields with valid numbers.</p>`;
-        resBox.style.display = "block";
+    if (!balance || !oldR || !newR) {
+        document.getElementById('resultBox').innerHTML = "Please enter valid numbers.";
         return;
     }
 
-    // 3. Mathematical Conversions
-    const n = years * 12; // Total months
-    const monthlyOldR = (oldRate / 100) / 12;
-    const monthlyNewR = (newRate / 100) / 12;
+    const oldEmi = (balance * oldR * Math.pow(1 + oldR, n)) / (Math.pow(1 + oldR, n) - 1);
+    const newEmi = (balance * newR * Math.pow(1 + newR, n)) / (Math.pow(1 + newR, n) - 1);
+    const savings = oldEmi - newEmi;
 
-    // 4. EMI Calculation Formula: [P x R x (1+R)^N] / [(1+R)^N - 1]
-    const calcEmi = (p, r, months) => {
-        if (r === 0) return p / months; // Handle 0% interest case
-        const x = Math.pow(1 + r, months);
-        return (p * r * x) / (x - 1);
-    };
-
-    const oldEmi = calcEmi(balance, monthlyOldR, n);
-    const newEmi = calcEmi(balance, monthlyNewR, n);
-
-    // 5. Calculate Savings
-    const monthlySavings = oldEmi - newEmi;
-    const totalSavings = monthlySavings * n;
-
-    // 6. Display Results with US Currency Formatting
-    if (monthlySavings <= 0) {
-        resBox.innerHTML = `<p style="color: #f0ad4e;">Your new rate is higher or equal. Refinancing may not save you money.</p>`;
-    } else {
-        resBox.innerHTML = `
-            <div style="text-align: left; border-left: 4px solid #28a745; padding-left: 15px;">
-                <h3 style="margin: 0; color: #28a745;">Monthly Savings: $${monthlySavings.toFixed(2)}</h3>
-                <p style="margin: 10px 0 5px 0;">New Monthly Payment: <strong>$${newEmi.toFixed(2)}</strong></p>
-                <p style="margin: 0;">Total Lifetime Savings: <strong style="color: #28a745;">$${totalSavings.toLocaleString(undefined, {minimumFractionDigits: 2})}</strong></p>
-            </div>
-        `;
-    }
-
-    // Ensure the box is visible (in case your CSS has it hidden)
-    resBox.style.display = "block";
+    document.getElementById('resultBox').innerHTML = `
+        <div style="text-align:left;">
+            <p>Old Monthly: <strong>$${oldEmi.toFixed(2)}</strong></p>
+            <p>New Monthly: <strong>$${newEmi.toFixed(2)}</strong></p>
+            <hr>
+            <p style="color:green; font-weight:bold;">Monthly Savings: $${savings.toFixed(2)}</p>
+        </div>`;
 }
 
+// --- Auto Insurance Estimator Logic ---
+function calcInsurance() {
+    const age = parseInt(document.getElementById('driverAge').value);
+    const accidents = parseInt(document.getElementById('accidents').value);
+    let baseRate = 900; // Average US 6-month premium base
 
+    if (age < 25) baseRate += 500;
+    if (accidents === 1) baseRate += 300;
+    if (accidents > 1) baseRate += 800;
+
+    document.getElementById('resultBox').innerHTML = `
+        <h3>Estimated 6-Month Premium</h3>
+        <p style="font-size:24px; color:#2c3e50;">$${baseRate.toFixed(2)}</p>
+        <p><small>Rates vary significantly by US State (e.g., CA vs FL).</small></p>`;
+}
 
 // --- NCLEX Predictor Logic ---
 function calcNCLEX() {
@@ -485,3 +298,133 @@ function calcNCLEX() {
         <h3>Pass Probability: <span style="color:${color}">${result}</span></h3>
         <p>Based on US national averages and scoring standards.</p>`;
 }
+
+// LETTER → %
+function letterToPercent(letter) {
+  const map = {
+    "A+": 97, "A": 95, "A-": 91,
+    "B+": 88, "B": 85, "B-": 81,
+    "C+": 78, "C": 75, "C-": 71,
+    "D+": 68, "D": 65, "F": 50
+  };
+  return map[letter.toUpperCase()] || 0;
+}
+
+// ADD ROW
+function addRow() {
+
+  let container = document.getElementById("rows");
+
+  let div = document.createElement("div");
+  div.className = "grade-row";
+
+  div.innerHTML = `
+    <input type="text" placeholder="Assignment">
+    <input type="text" class="grade" placeholder="90 or A">
+    <input type="number" class="weight" placeholder="Weight %">
+  `;
+
+  container.appendChild(div);
+}
+
+// MAIN CALCULATION
+function calculateGrade() {
+
+  let rows = document.querySelectorAll(".grade-row");
+
+  let totalWeight = 0;
+  let weightedSum = 0;
+
+  rows.forEach(row => {
+
+    let gradeInput = row.querySelector(".grade").value.trim();
+    let weight = parseFloat(row.querySelector(".weight").value) || 0;
+
+    let grade = parseFloat(gradeInput);
+
+    // if letter
+    if (isNaN(grade)) {
+      grade = letterToPercent(gradeInput);
+    }
+
+    weightedSum += grade * weight;
+    totalWeight += weight;
+
+  });
+
+  let result = totalWeight ? (weightedSum / totalWeight) : 0;
+
+  document.getElementById("resultBox").innerHTML =
+    `Final Grade: <b>${result.toFixed(2)}%</b>`;
+}
+
+// FINAL TARGET CALC
+function calculateTarget() {
+
+  let current = parseFloat(document.getElementById("current").value) || 0;
+  let target = parseFloat(document.getElementById("target").value) || 0;
+  let weight = parseFloat(document.getElementById("finalWeight").value) || 0;
+
+  let required = (target - (current * (100 - weight) / 100)) / (weight / 100);
+
+  document.getElementById("targetResult").innerHTML =
+    `You need <b>${required.toFixed(2)}%</b> in final exam`;
+}
+
+function calculateCalories() {
+
+  let age = parseFloat(document.getElementById("age").value);
+  let gender = document.getElementById("gender").value;
+  let height = parseFloat(document.getElementById("height").value);
+  let weight = parseFloat(document.getElementById("weight").value);
+  let activity = parseFloat(document.getElementById("activity").value);
+  let formula = document.getElementById("formula").value;
+  let bodyfat = parseFloat(document.getElementById("bodyfat").value);
+
+  if (!age || !height || !weight) {
+    document.getElementById("resultBox").innerHTML = "Enter all values";
+    return;
+  }
+
+  let bmr;
+
+  // Mifflin
+  if (formula === "mifflin") {
+    if (gender === "male") {
+      bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    } else {
+      bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    }
+  }
+
+  // Harris
+  if (formula === "harris") {
+    if (gender === "male") {
+      bmr = 13.397 * weight + 4.799 * height - 5.677 * age + 88.362;
+    } else {
+      bmr = 9.247 * weight + 3.098 * height - 4.330 * age + 447.593;
+    }
+  }
+
+  // Katch
+  if (formula === "katch") {
+    if (!bodyfat) {
+      document.getElementById("resultBox").innerHTML = "Enter body fat %";
+      return;
+    }
+    let leanMass = weight * (1 - bodyfat / 100);
+    bmr = 370 + (21.6 * leanMass);
+  }
+
+  let maintenance = bmr * activity;
+  let fatLoss = maintenance - 500;
+  let gain = maintenance + 300;
+
+  document.getElementById("resultBox").innerHTML = `
+    <h3>Results</h3>
+    Maintenance: <b>${maintenance.toFixed(0)} kcal</b><br>
+    Fat Loss: <b>${fatLoss.toFixed(0)} kcal</b><br>
+    Weight Gain: <b>${gain.toFixed(0)} kcal</b>
+  `;
+}
+

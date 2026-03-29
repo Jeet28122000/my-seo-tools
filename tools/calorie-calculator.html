@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calorie Calculator – Daily Calorie Needs | ExamSoup</title>
+
+<meta name="description" content="Calculate daily calorie needs using BMR formulas. Find calories to maintain, lose, or gain weight. Includes food and exercise tables.">
+
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- SCHEMA MARKUP -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Calorie Calculator",
+ "url": "https://examsoup.com/calorie-calculator.html",
+ "applicationCategory": "HealthApplication",
+ "operatingSystem": "All",
+ "description": "Calculate daily calorie intake for weight loss, maintenance, and gain."
+}
+</script>
+
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Calorie Calculator</h1>
+  <p>Calculate daily calories for fat loss, maintenance, or muscle gain</p>
+</section>
+
+<section class="tool-card">
+<div class="tool-container">
+<div class="calculator-card">
+
+<h2>Enter Details</h2>
+
+<select id="unit">
+  <option value="metric">Metric (kg, cm)</option>
+  <option value="us">US (lbs, ft/in)</option>
+</select>
+
+<input id="age" type="number" placeholder="Age">
+
+<select id="gender">
+  <option value="male">Male</option>
+  <option value="female">Female</option>
+</select>
+
+<input id="height" type="number" placeholder="Height (cm)">
+<input id="weight" type="number" placeholder="Weight (kg)">
+
+<select id="activity">
+  <option value="1.2">Sedentary</option>
+  <option value="1.375">Light</option>
+  <option value="1.55">Moderate</option>
+  <option value="1.725">Active</option>
+  <option value="1.9">Very Active</option>
+</select>
+
+<select id="formula">
+  <option value="mifflin">Mifflin-St Jeor</option>
+  <option value="harris">Harris-Benedict</option>
+  <option value="katch">Katch-McArdle</option>
+</select>
+
+<input id="bodyfat" placeholder="Body Fat % (Katch only)">
+
+<button onclick="calculateCalories()">Calculate</button>
+
+<div id="resultBox" class="result-box"></div>
+
+</div>
+</div>
+</section>
+
+<!-- SEO CONTENT -->
+
+<section class="content">
+<h2>Daily Calorie Requirement</h2>
+
+<p>
+A calorie calculator helps determine how many calories your body needs daily. It uses BMR formulas and activity levels to estimate your maintenance calories.
+</p>
+
+<p>
+Whether your goal is fat loss, muscle gain, or weight maintenance, this tool gives accurate results based on scientific formulas.
+</p>
+</section>
+
+<section class="content">
+<h2>Food Calorie Table</h2>
+
+<table>
+<tr><th>Food</th><th>Calories (per 100g)</th></tr>
+<tr><td>Rice</td><td>130</td></tr>
+<tr><td>Roti</td><td>120</td></tr>
+<tr><td>Paneer</td><td>265</td></tr>
+<tr><td>Egg</td><td>155</td></tr>
+<tr><td>Chicken</td><td>239</td></tr>
+<tr><td>Banana</td><td>89</td></tr>
+<tr><td>Milk</td><td>42</td></tr>
+</table>
+</section>
+
+<section class="content">
+<h2>Exercise Calorie Burn</h2>
+
+<table>
+<tr><th>Activity</th><th>Calories Burned (30 min)</th></tr>
+<tr><td>Walking</td><td>120</td></tr>
+<tr><td>Running</td><td>300</td></tr>
+<tr><td>Cycling</td><td>250</td></tr>
+<tr><td>Gym Workout</td><td>200</td></tr>
+<tr><td>Skipping</td><td>350</td></tr>
+</table>
+</section>
+
+<section class="content">
+<h2>How to Use</h2>
+
+<ul>
+<li>Enter age, height, and weight</li>
+<li>Select activity level</li>
+<li>Click calculate</li>
+<li>Get maintenance, fat loss, and gain calories</li>
+</ul>
+
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>ExamSoup</h3>
+      <p>Free online calculators for health, finance and education.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul>
+        <li><a href="/bmi-calculator.html">BMI</a></li>
+        <li><a href="/emi-calculator.html">EMI</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/privacy-policy.html">Privacy</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ExamSoup</p>
+  </div>
+</footer>
+
+<script src="../js/tools.js"></script>
+<script src="../js/calorie.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Auto Loan EMI Calculator – Car Loan Monthly Installments | ExamSoup</title>
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Finance</a>
+    <a href="#">Health</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>Auto Loan EMI Calculator</h1>
+  <p>Calculate your car loan EMI, interest, and total payment instantly</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+
+      <h2>Loan Details</h2>
+
+      <div class="input-group">
+        <label>Loan Amount (₹)</label>
+        <input id="loanAmount" type="number" placeholder="e.g. 500000" min="1">
+      </div>
+
+      <div class="input-group">
+        <label>Interest Rate (% per year)</label>
+        <input id="interestRate" type="number" placeholder="e.g. 10" step="0.01" min="0">
+      </div>
+
+      <div class="input-group">
+        <label>Loan Tenure (Years)</label>
+        <input id="loanTenure" type="number" placeholder="e.g. 5" min="1">
+      </div>
+
+      <button onclick="calcLoan()">Calculate EMI</button>
+
+      <div id="resultBox" class="result-box"></div>
+
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>What is an Auto Loan?</h2>
+  <p>
+    An auto loan is a type of secured loan that allows individuals to purchase a vehicle by paying in monthly installments over a fixed period. The vehicle itself acts as collateral for the loan.
+  </p>
+  <p>
+    Instead of paying the full price upfront, borrowers can spread the cost over time, making it easier to afford expensive vehicles.
+  </p>
+  <ul>
+    <li>Principal: Total loan amount</li>
+    <li>Interest Rate: Cost of borrowing</li>
+    <li>Loan Tenure: Duration of repayment</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Auto Loan EMI Formula</h2>
+  <p>Our calculator uses the standard mathematical formula:</p>
+  <p style="background: #f4f4f4; padding: 15px; border-radius: 8px; font-family: monospace;">
+    EMI = [P × R × (1 + R)^N] / [(1 + R)^N – 1]
+  </p>
+  <ul>
+    <li><b>P:</b> Loan amount (Principal)</li>
+    <li><b>R:</b> Monthly interest rate (Annual Rate ÷ 12 ÷ 100)</li>
+    <li><b>N:</b> Number of monthly installments (Years × 12)</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Example of Car Loan Calculation</h2>
+  <ul>
+    <li>Loan Amount: ₹5,00,000</li>
+    <li>Interest Rate: 10% annually</li>
+    <li>Tenure: 5 years</li>
+  </ul>
+  <p>
+    Using the formula, your monthly EMI would be approximately ₹10,624. This helps you understand affordability before applying for a loan.
+  </p>
+</section>
+
+<section class="content">
+  <h2>Benefits of Using an Auto Loan Calculator</h2>
+  <ul>
+    <li>Instant EMI calculation</li>
+    <li>Better financial planning</li>
+    <li>Compare loan offers easily</li>
+    <li>Avoid over-borrowing</li>
+    <li>Understand total interest payable</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Factors Affecting Car Loan EMI</h2>
+  <ul>
+    <li><b>Loan Amount:</b> Higher amount increases EMI</li>
+    <li><b>Interest Rate:</b> Higher rate means higher EMI</li>
+    <li><b>Loan Tenure:</b> Longer tenure reduces EMI but increases total interest</li>
+    <li><b>Credit Score:</b> Better score gets lower interest rates</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Tips to Reduce Your Car Loan EMI</h2>
+  <ul>
+    <li>Increase down payment</li>
+    <li>Choose shorter tenure if affordable</li>
+    <li>Compare lenders before choosing</li>
+    <li>Maintain a good credit score</li>
+    <li>Negotiate interest rates</li>
+  </ul>
+</section>
+
+<section class="content">
+  <h2>Auto Loan vs Personal Loan</h2>
+  <table>
+    <tr><th>Feature</th><th>Auto Loan</th><th>Personal Loan</th></tr>
+    <tr><td>Interest Rate</td><td>Lower</td><td>Higher</td></tr>
+    <tr><td>Collateral</td><td>Vehicle</td><td>None</td></tr>
+    <tr><td>Usage</td><td>Vehicle purchase</td><td>Any purpose</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Typical Loan Interest Rates</h2>
+  <table>
+    <tr><th>Loan Type</th><th>Avg. Interest Rate</th><th>Common Tenure</th></tr>
+    <tr><td>Home Loan</td><td>8.5% - 9.5%</td><td>15 - 30 Years</td></tr>
+    <tr><td>Car Loan</td><td>7% - 10%</td><td>3 - 7 Years</td></tr>
+    <tr><td>Personal Loan</td><td>11% - 18%</td><td>1 - 5 Years</td></tr>
+  </table>
+</section>
+
+<section class="content">
+  <h2>Frequently Asked Questions (FAQs)</h2>
+  <h3>What is a good interest rate for a car loan?</h3>
+  <p>Typically between 7% to 12% depending on credit score and lender.</p>
+
+  <h3>Can I prepay my car loan?</h3>
+  <p>Yes, most lenders allow prepayment but may charge a small fee.</p>
+
+  <h3>Does EMI remain fixed?</h3>
+  <p>Yes, for fixed-rate loans EMI remains constant throughout the tenure.</p>
+
+  <h3>How much loan can I afford?</h3>
+  <p>It depends on your income, expenses, and existing liabilities.</p>
+</section>
+
+<section class="content">
+  <h2>Related Tools</h2>
+  <ul>
+    <li><a href="/emi-calculator.html">EMI Calculator</a></li>
+    <li><a href="/loan-calculator.html">Loan Calculator</a></li>
+    <li><a href="/percentage-calculator.html">Percentage Calculator</a></li>
+    <li><a href="/discount-calculator.html">Discount Calculator</a></li>
+  </ul>
+</section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h3>ExamSoup</h3>
+      <p>
+        ExamSoup provides free online calculators including BMI, EMI, loan, and finance tools.
+        Our tools are fast, accurate, and designed to help you make better financial and health decisions.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Popular Tools</h4>
+      <ul>
+        <li><a href="/bmi-calculator.html">BMI Calculator</a></li>
+        <li><a href="/emi-calculator.html">EMI Calculator</a></li>
+        <li><a href="/age-calculator.html">Age Calculator</a></li>
+        <li><a href="/percentage-calculator.html">Percentage Calculator</a></li>
+        <li><a href="/loan-calculator.html">Loan Calculator</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/terms.html">Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Free Calculators</h4>
+      <p>
+        Use our free calculators to calculate EMI, BMI, loan payments, percentages, and more.
+        Trusted by users worldwide including the United States, UK, and Australia.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 ExamSoup. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/tools.js"></script>
+
+</body>
+</html>
