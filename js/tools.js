@@ -413,3 +413,75 @@ function calcBMR() {
 
     res.innerHTML = `<p>Your BMR: <strong>${Math.round(bmr)} Calories/day</strong></p>`;
 }
+
+/**
+ * Student Loan Refinance Calculator Logic
+ */
+function calcRefi() {
+    // 1. Get input values by ID
+    const balance = parseFloat(document.getElementById('refiBalance').value);
+    const oldRate = parseFloat(document.getElementById('oldRate').value);
+    const newRate = parseFloat(document.getElementById('newRate').value);
+    const years = parseFloat(document.getElementById('refiTenure').value);
+    const resBox = document.getElementById('resultBox');
+
+    // 2. Validation: Ensure all fields are filled and positive
+    if (!balance || !oldRate || !newRate || !years || balance <= 0) {
+        resBox.innerHTML = `<p style="color: #d9534f; font-weight: bold;">Please fill in all fields with valid numbers.</p>`;
+        resBox.style.display = "block";
+        return;
+    }
+
+    // 3. Mathematical Conversions
+    const n = years * 12; // Total months
+    const monthlyOldR = (oldRate / 100) / 12;
+    const monthlyNewR = (newRate / 100) / 12;
+
+    // 4. EMI Calculation Formula: [P x R x (1+R)^N] / [(1+R)^N - 1]
+    const calcEmi = (p, r, months) => {
+        if (r === 0) return p / months; // Handle 0% interest case
+        const x = Math.pow(1 + r, months);
+        return (p * r * x) / (x - 1);
+    };
+
+    const oldEmi = calcEmi(balance, monthlyOldR, n);
+    const newEmi = calcEmi(balance, monthlyNewR, n);
+
+    // 5. Calculate Savings
+    const monthlySavings = oldEmi - newEmi;
+    const totalSavings = monthlySavings * n;
+
+    // 6. Display Results with US Currency Formatting
+    if (monthlySavings <= 0) {
+        resBox.innerHTML = `<p style="color: #f0ad4e;">Your new rate is higher or equal. Refinancing may not save you money.</p>`;
+    } else {
+        resBox.innerHTML = `
+            <div style="text-align: left; border-left: 4px solid #28a745; padding-left: 15px;">
+                <h3 style="margin: 0; color: #28a745;">Monthly Savings: $${monthlySavings.toFixed(2)}</h3>
+                <p style="margin: 10px 0 5px 0;">New Monthly Payment: <strong>$${newEmi.toFixed(2)}</strong></p>
+                <p style="margin: 0;">Total Lifetime Savings: <strong style="color: #28a745;">$${totalSavings.toLocaleString(undefined, {minimumFractionDigits: 2})}</strong></p>
+            </div>
+        `;
+    }
+
+    // Ensure the box is visible (in case your CSS has it hidden)
+    resBox.style.display = "block";
+}
+
+
+
+// --- NCLEX Predictor Logic ---
+function calcNCLEX() {
+    const score = parseFloat(document.getElementById('nclexScore').value);
+    const total = parseInt(document.getElementById('nclexTotal').value);
+    let result = "";
+    let color = "";
+
+    if (score >= 70 && total >= 1000) { result = "Very High Probability"; color = "green"; }
+    else if (score >= 60) { result = "Moderate Probability"; color = "orange"; }
+    else { result = "Needs More Practice"; color = "red"; }
+
+    document.getElementById('resultBox').innerHTML = `
+        <h3>Pass Probability: <span style="color:${color}">${result}</span></h3>
+        <p>Based on US national averages and scoring standards.</p>`;
+}

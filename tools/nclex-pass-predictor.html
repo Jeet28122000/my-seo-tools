@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NCLEX Pass Probability Predictor | Nursing Exam Prep | ExamSoup</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">ExamSoup</div>
+  <input type="text" placeholder="Search tools..." class="search">
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="#">Health</a>
+    <a href="#">Education</a>
+  </nav>
+  <button onclick="toggleDark()" class="dark-btn">🌙</button>
+</header>
+
+<section class="hero">
+  <h1>NCLEX-RN Pass Predictor</h1>
+  <p>Analyze your practice exam scores to estimate your probability of passing the NCLEX exam.</p>
+</section>
+
+<section class="tool-card">
+  <div class="tool-container">
+    <div class="calculator-card">
+      <h2>Performance Stats</h2>
+      <div class="input-group">
+        <label>Practice Question Average (%)</label>
+        <input id="nclexScore" type="number" placeholder="e.g. 72">
+      </div>
+      <div class="input-group">
+        <label>Total Questions Completed</label>
+        <input id="nclexTotal" type="number" placeholder="e.g. 1500">
+      </div>
+      <button onclick="calcNCLEX()">Predict My Result</button>
+      <div id="resultBox" class="result-box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <h2>About the NCLEX-RN Passing Standard</h2>
+  <p>The National Council Licensure Examination (NCLEX) uses Computerized Adaptive Testing (CAT). While there is no "set" percentage to pass, scoring consistently above 60-70% on high-quality practice banks like UWorld or Archer is generally a strong indicator of readiness.</p>
+</section>
+
+<footer>
+  <p>© 2026 ExamSoup | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script src="../js/tools.js"></script>
+</body>
+</html>
